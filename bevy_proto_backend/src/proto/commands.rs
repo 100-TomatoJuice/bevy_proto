@@ -108,7 +108,7 @@ impl<'w, 's, T: Prototypical, C: Config<T>> ProtoCommands<'w, 's, T, C> {
         &mut self.commands
     }
 
-    fn add<Cmd: Command>(&mut self, command: Cmd) {
+    pub fn add<Cmd: Command>(&mut self, command: Cmd) {
         self.commands.add(command);
     }
 }
@@ -227,7 +227,7 @@ impl<T: Prototypical, C: Config<T>> Command for ProtoRemoveCommand<T, C> {
     }
 }
 
-struct ProtoCommandData<T: Prototypical, C: Config<T>> {
+pub struct ProtoCommandData<T: Prototypical, C: Config<T>> {
     id: T::Id,
     entity: Option<Entity>,
     _phantom: PhantomData<C>,
