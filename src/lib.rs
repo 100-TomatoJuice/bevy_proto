@@ -84,6 +84,7 @@ pub mod prelude {
     pub use bevy_proto_backend::assets::{AssetSchematic, AssetSchematicAppExt};
     pub use bevy_proto_backend::deps::DependenciesBuilder;
     pub use bevy_proto_backend::proto::Prototypical;
+    pub use bevy_proto_backend::registration::registry::ProtoRegistry;
     pub use bevy_proto_backend::schematics::{
         ReflectSchematic, Schematic, SchematicContext, SchematicId,
     };

@@ -4,5 +4,5 @@ pub(crate) use systems::*;
 
 mod manager;
 mod params;
-mod registry;
+pub mod registry;
 mod systems;

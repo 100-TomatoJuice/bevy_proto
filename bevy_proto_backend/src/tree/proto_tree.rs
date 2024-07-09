@@ -14,7 +14,7 @@ use crate::tree::EntityTree;
 /// This is used to generate a corresponding [`EntityTree`] for processing.
 ///
 /// [prototype]: Prototypical
-pub(crate) struct ProtoTree<T: Prototypical> {
+pub struct ProtoTree<T: Prototypical> {
     /// The [ID] of this prototype.
     ///
     /// [ID]: Prototypical::Id

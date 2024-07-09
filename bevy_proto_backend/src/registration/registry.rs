@@ -16,7 +16,7 @@ use crate::tree::{ProtoTree, ProtoTreeBuilder};
 
 /// Resource used to track load states, store mappings, and generate cached data.
 #[derive(Resource)]
-pub(crate) struct ProtoRegistry<T: Prototypical, C: Config<T>> {
+pub struct ProtoRegistry<T: Prototypical, C: Config<T>> {
     ids: HashMap<HandleId, T::Id>,
     handles: HashMap<T::Id, Handle<T>>,
     trees: HashMap<HandleId, ProtoTree<T>>,
@@ -233,7 +233,7 @@ impl<T: Prototypical, C: Config<T>> Default for ProtoRegistry<T, C> {
     }
 }
 
-pub(crate) struct LoadQueue<T: Prototypical> {
+pub struct LoadQueue<T: Prototypical> {
     handles: HashMap<T::Id, Handle<T>>,
     ids: HashMap<HandleId, T::Id>,
 }
