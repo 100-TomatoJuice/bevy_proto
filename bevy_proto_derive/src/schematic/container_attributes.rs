@@ -1,11 +1,7 @@
 use std::fmt::{Debug, Formatter};
 
-use crate::common::input::{
-    parse_input_meta, ForwardAttributes, InputType, OutputType, SchematicIo,
-};
-use crate::utils::constants::{
-    FROM_ATTR, INPUT_ATTR, INTO_ATTR, SCHEMATIC_ATTR, SCHEMATIC_ATTR_ATTR,
-};
+use crate::common::input::{parse_input_meta, InputType, OutputType, SchematicIo};
+use crate::utils::constants::{FROM_ATTR, INPUT_ATTR, INTO_ATTR, SCHEMATIC_ATTR};
 use syn::meta::ParseNestedMeta;
 use syn::{Attribute, Error, LitStr};
 
@@ -19,7 +15,6 @@ const KIND_RESOURCE: &str = "resource";
 #[derive(Default)]
 pub(super) struct ContainerAttributes {
     kind: SchematicKind,
-    forward_attrs: ForwardAttributes,
 }
 
 impl ContainerAttributes {
@@ -27,11 +22,6 @@ impl ContainerAttributes {
         let mut this = Self::default();
 
         for attr in attrs {
-            if attr.path().is_ident(SCHEMATIC_ATTR_ATTR) {
-                this.forward_attrs.extend_from_attribute(attr)?;
-                continue;
-            }
-
             if !attr.path().is_ident(SCHEMATIC_ATTR) {
                 continue;
             }
@@ -73,10 +63,6 @@ impl ContainerAttributes {
             }
             _ => Err(unsupported_arg(&meta, Some(&[KIND_BUNDLE, KIND_RESOURCE]))),
         }
-    }
-
-    pub fn forward_attrs(&self) -> &ForwardAttributes {
-        &self.forward_attrs
     }
 }
 

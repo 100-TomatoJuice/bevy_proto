@@ -86,7 +86,6 @@ impl DeriveAssetSchematic {
             self.io(),
             self.data(),
             self.generics(),
-            self.attrs.forward_attrs(),
             self.attrs().no_preload(),
         )?;
         let load_def = self.load_def();
